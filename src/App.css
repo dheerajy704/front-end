@@ -1,4 +1,7 @@
-
+body{
+  background-image: url("./bg.jpg");
+  color: white;
+}
 .nav-ul li{
   display: inline-block;
   padding: 10px;
@@ -22,12 +25,17 @@
     background-color: skyblue;
     width: 100%;
 }
- .register{
+ .register , .product{
   margin-left: 30%;
+ }
+
+ .login{
+  margin-left: 30%;
+  margin-top: 100px;
  }
 .inputBox{
   display: block;
-  margin: 25px;
+  margin: 20px;
   padding: 7px;
   width: 300px;
   border: 1px solid skyblue;
@@ -42,12 +50,44 @@
   border: 1px solid;
   cursor: pointer;
 }
+.nav-right{
+  text-align: right;
+}
+.logo{
+  width: 45px;
+  float: left;
+  border-radius: 50%;
+  margin-top: 6px;
+  margin-left: 20px;
+  text-align: center;
+}
+.invalid-input{
+  color: red;
+  margin-top: -20px;
+  display: block;
+  margin-left: 20px;
+}
+.product-list{
+  text-align: center;
+  margin-top: 50px;
+}
 
-
-
-
-
-
+.product-list ul li {
+  display: inline-block;
+  border: 1px solid skyblue;
+  padding: 5px;
+  width: 150px;
+}
+.product-list ul {
+  margin: 0;
+}
+.search-product-box{
+  width: 400px;
+  margin: 20px;
+  height: 40px;
+  border: 1px solid skyblue;
+  padding-left: 20px;
+}
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
@@ -68,6 +108,9 @@
 
 .App-link {
   color: #61dafb;
+}
+.userprofile{
+  text-align: center;
 }
 
 @keyframes App-logo-spin {

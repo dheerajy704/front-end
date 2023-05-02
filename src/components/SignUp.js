@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from "axios"
+import {useNavigate} from 'react-router-dom'
 
 
 
@@ -7,6 +8,17 @@ const SignUp = () => {
     const [name, setName] = useState("");
     const [password, setPassword] = useState("");
     const [email, setEmail] = useState("");
+    // const navigate = useNavigate();
+
+    const navigate = useNavigate();
+    useEffect(()=> {
+        const auth = localStorage.getItem('user');
+        if(auth)
+        {
+            navigate('/')
+        }
+    })
+
     const collectData = async () => {
         console.log(name, email, password);
         // let result = await fetch('http://localhost:8000/register', {
@@ -17,6 +29,13 @@ const SignUp = () => {
         //     },
         // })
         const result = await axios.post("http://localhost:8000/register", {name, email, password})
+
+        if(result)
+        // {
+        //     navigate('/')
+        // }
+        localStorage.setItem("user", JSON.stringify(result));
+        navigate('/')
 
         // result = await result.json()
         console.log( result);
