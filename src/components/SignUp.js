@@ -8,8 +8,6 @@ const SignUp = () => {
     const [name, setName] = useState("");
     const [password, setPassword] = useState("");
     const [email, setEmail] = useState("");
-    // const navigate = useNavigate();
-
     const navigate = useNavigate();
     useEffect(()=> {
         const auth = localStorage.getItem('user');
@@ -17,28 +15,30 @@ const SignUp = () => {
         {
             navigate('/')
         }
-    })
+    },[])
 
     const collectData = async () => {
         console.log(name, email, password);
-        // let result = await fetch('http://localhost:8000/register', {
-        //     method: 'POST',
-        //     body: { name, email, password },
-        //     headers: {
-        //         'Content-Type': 'application/json'
-        //     },
-        // })
-        const result = await axios.post("http://localhost:8000/register", {name, email, password})
-
-        if(result)
+        let result = await fetch('http://localhost:8000/register', {
+            method: 'POST',
+            body: JSON.stringify({ name, email, password }),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+        // const result = await axios.post("http://localhost:8000/register", {name, email, password})
+        result = await result.json();
+        console.log(result);
+        // if(result)
         // {
-        //     navigate('/')
+            // navigate('/')
         // }
-        localStorage.setItem("user", JSON.stringify(result));
+        localStorage.setItem("user", JSON.stringify(result.result))
+        localStorage.setItem("token", JSON.stringify(result.auth))
         navigate('/')
 
         // result = await result.json()
-        console.log( result);
+        // console.log( result);
     }
     return (
         <div className='register'>
